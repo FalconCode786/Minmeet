@@ -1,0 +1,13 @@
+Flask
+Werkzeug
+gunicorn
+python-multipart
+vosk
+numpy
+scipy
+librosa
+scikit-learn
+reportlab
+PyPDF2
+sqlite-utils==3.34
+python-dateutil==2.8.2

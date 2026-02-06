@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Minutes - Automated Documentation</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1>Meeting Minutes</h1>
+            <p class="subtitle">Automated transcription & documentation</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Initial Setup Screen -->
+            <section id="setup-screen" class="screen active">
+                <div class="card">
+                    <h2>Start New Meeting</h2>
+                    <div class="form-group">
+                        <label for="meeting-title">Meeting Title</label>
+                        <input type="text" id="meeting-title" placeholder="Quarterly Review, Sprint Planning, etc." value="Team Meeting">
+                    </div>
+                    
+                    <div class="audio-permission">
+                        <div class="permission-icon">🎤</div>
+                        <p>Microphone access required for transcription</p>
+                        <small>Audio is processed locally and on secure servers. No data is retained after PDF generation.</small>
+                    </div>
+
+                    <button id="start-btn" class="btn btn-primary">
+                        <span class="btn-icon">●</span>
+                        Start Recording
+                    </button>
+                </div>
+            </section>
+
+            <!-- Active Meeting Screen -->
+            <section id="meeting-screen" class="screen">
+                <div class="meeting-header">
+                    <div class="meeting-info">
+                        <h2 id="active-title">Meeting in Progress</h2>
+                        <div class="meeting-meta">
+                            <span class="recording-indicator">
+                                <span class="pulse"></span>
+                                Recording
+                            </span>
+                            <span id="duration">00:00:00</span>
+                            <span id="participant-count">1 participant</span>
+                        </div>
+                    </div>
+                    <button id="stop-btn" class="btn btn-danger">End Meeting</button>
+                </div>
+
+                <div class="content-grid">
+                    <!-- Live Transcript -->
+                    <div class="panel panel-transcript">
+                        <div class="panel-header">
+                            <h3>Live Transcript</h3>
+                            <span class="status-badge" id="transcript-status">Listening...</span>
+                        </div>
+                        <div class="panel-body" id="transcript-container">
+                            <div class="empty-state">
+                                <p>Waiting for speech...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Questions & Answers -->
+                    <div class="panel panel-qa">
+                        <div class="panel-header">
+                            <h3>Questions & Answers</h3>
+                            <span class="count-badge" id="qa-count">0</span>
+                        </div>
+                        <div class="panel-body" id="qa-container">
+                            <div class="empty-state">
+                                <p>No questions detected yet</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audio Visualizer -->
+                <div class="audio-visualizer">
+                    <canvas id="audio-canvas"></canvas>
+                </div>
+            </section>
+
+            <!-- Completion Screen -->
+            <section id="completion-screen" class="screen">
+                <div class="card centered">
+                    <div class="success-icon">✓</div>
+                    <h2>Meeting Complete</h2>
+                    <p>Your meeting minutes have been generated and are ready for download.</p>
+                    
+                    <div class="meeting-summary" id="meeting-summary">
+                        <!-- Populated dynamically -->
+                    </div>
+
+                    <div class="actions">
+                        <a id="download-btn" href="#" class="btn btn-primary" download>
+                            Download PDF
+                        </a>
+                        <button id="new-meeting-btn" class="btn btn-secondary">
+                            Start New Meeting
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <p>Private & Secure • No cloud APIs • Local Processing</p>
+        </footer>
+    </div>
+
+    <script src="js/audio-handler.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
